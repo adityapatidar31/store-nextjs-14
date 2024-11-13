@@ -1,3 +1,11 @@
+import FeaturedProducts from "./_components/home/FeaturedProducts";
+import Hero from "./_components/home/Hero";
+
 export default function HomePage() {
-  return <h1>Home Page</h1>;
+  return (
+    <>
+      <Hero />
+      <FeaturedProducts />
+    </>
+  );
 }
