@@ -10,10 +10,10 @@ function Hero() {
           We are changing the way people shop
         </h1>
         <p className="mt-8 max-w-xl text-lg leading-8 text-muted-foreground">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque et
-          voluptas saepe in quae voluptate, laborum maiores possimus illum
-          reprehenderit aut delectus veniam cum perferendis unde sint doloremque
-          non nam.
+          Shop our curated selection of quality products across categories like
+          tech, fashion, and home essentials. Enjoy a seamless experience with
+          secure payments, fast shipping, and trusted brands, all designed for
+          your satisfaction.
         </p>
         <Button asChild size="lg" className="mt-10">
           <Link href="/products">Our Products</Link>
