@@ -1,15 +1,13 @@
-import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 
-type PropType = { text: string };
-
-function SectionTitle({ text }: PropType) {
-  return (
-    <div>
-      <h2 className="text-3xl font-medium tracking-wider capitalize mb-8">
-        {text}
-      </h2>
-      <Separator />
-    </div>
-  );
+function EmptyList({
+  heading = "No items found.",
+  className,
+}: {
+  heading?: string;
+  className?: string;
+}) {
+  return <h2 className={cn("text-xl ", className)}>{heading}</h2>;
 }
-export default SectionTitle;
+
+export default EmptyList;
