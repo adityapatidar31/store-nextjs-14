@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { LuShoppingCart } from "react-icons/lu";
 import Link from "next/link";
+
 async function CartButton() {
   // temp
   const numItemsInCart = 19;

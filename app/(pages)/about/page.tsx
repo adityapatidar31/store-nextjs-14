@@ -1,6 +1,13 @@
-import React from "react";
+import db from "@/utils/db";
 
-function AboutPage() {
+async function AboutPage() {
+  const task = await db.testProfile.create({
+    data: {
+      name: "aditya",
+    },
+  });
+
+  console.log(task);
   return <div>About Page</div>;
 }
 
