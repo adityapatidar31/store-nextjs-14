@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "./_components/navbar/Navbar";
 import Container from "./_components/global/Container";
+import Providers from "./providers";
 
 const infer = Inter({ subsets: ["latin"] });
 
@@ -17,10 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={infer.className}>
-        <Navbar />
-        <Container className="py-20">{children}</Container>
+        <Providers>
+          <Navbar />
+          <Container className="py-20">{children}</Container>
+        </Providers>
       </body>
     </html>
   );
