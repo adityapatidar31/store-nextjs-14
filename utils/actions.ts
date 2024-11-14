@@ -1,4 +1,5 @@
 import db from "@/utils/db";
+import { redirect } from "next/navigation";
 
 export async function fetchFeaturedProducts() {
   const products = await db.product.findMany({
@@ -16,4 +17,14 @@ export async function fetchAllProducts() {
     },
   });
   return products;
+}
+
+export async function fetchSingleProduct(productId: string) {
+  const singleProduct = await db.product.findUnique({
+    where: {
+      id: productId,
+    },
+  });
+  if (!singleProduct) redirect("/products");
+  return singleProduct;
 }
