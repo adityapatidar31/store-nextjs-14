@@ -1,5 +1,3 @@
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { faker } from "@faker-js/faker";
 import FormInput from "@/app/_components/form/FormInput";
