@@ -63,7 +63,7 @@ export async function fetchSingleProduct(productId: string) {
 }
 
 export const createProductAction = async (
-  prevState: any,
+  prevState: unknown,
   formData: FormData
 ): Promise<{ message: string }> => {
   const user = await getAuthUser();
@@ -114,4 +114,15 @@ export const deleteProductAction = async (prevState: { productId: string }) => {
   } catch (error) {
     return renderError(error);
   }
+};
+
+export const fetchAdminProductDetails = async (productId: string) => {
+  await getAdminUser();
+  const product = await db.product.findUnique({
+    where: {
+      id: productId,
+    },
+  });
+  if (!product) redirect("/admin/products");
+  return product;
 };
