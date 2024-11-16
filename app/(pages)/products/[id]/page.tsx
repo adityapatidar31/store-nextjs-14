@@ -5,6 +5,7 @@ import BreadCrumbs from "@/app/_components/single-product/BreadCrumbs";
 import FavoriteToggleButton from "@/app/_components/products/FavoriteToggleButton";
 import ProductRating from "@/app/_components/single-product/ProductRating";
 import AddToCart from "@/app/_components/single-product/AddToCart";
+import ShareButton from "@/app/_components/single-product/ShareButton";
 
 type PropType = {
   params: { id: string };
@@ -34,7 +35,10 @@ async function SingleProductPage({ params }: PropType) {
         <div>
           <div className="flex gap-x-8 items-center">
             <h1 className="capitalize text-3xl font-bold">{name}</h1>
-            <FavoriteToggleButton productId={params.id} />
+            <div className="flex items-center gap-x-2">
+              <FavoriteToggleButton productId={params.id} />
+              <ShareButton name={product.name} productId={params.id} />
+            </div>
           </div>
           <ProductRating productId={params.id} />
           <h4 className="text-xl mt-2">{company}</h4>
