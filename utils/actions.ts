@@ -63,7 +63,7 @@ export async function fetchSingleProduct(productId: string) {
 }
 
 export const createProductAction = async (
-  prevState: null,
+  prevState: unknown,
   formData: FormData
 ): Promise<{ message: string }> => {
   const user = await getAuthUser();
@@ -128,7 +128,7 @@ export const fetchAdminProductDetails = async (productId: string) => {
 };
 
 export const updateProductAction = async (
-  prevState: null,
+  prevState: unknown,
   formData: FormData
 ) => {
   await getAdminUser();
@@ -152,7 +152,7 @@ export const updateProductAction = async (
 };
 
 export const updateProductImageAction = async (
-  prevState: null,
+  prevState: unknown,
   formData: FormData
 ) => {
   return { message: "Product Image updated successfully" };

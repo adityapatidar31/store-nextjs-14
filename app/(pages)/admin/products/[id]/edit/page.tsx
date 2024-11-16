@@ -2,9 +2,14 @@ import { SubmitButton } from "@/app/_components/form/Buttons";
 import CheckboxInput from "@/app/_components/form/CheckBoxInput";
 import FormContainer from "@/app/_components/form/FormContainer";
 import FormInput from "@/app/_components/form/FormInput";
+import ImageInputContainer from "@/app/_components/form/ImageInputContainer";
 import PriceInput from "@/app/_components/form/PriceInput";
 import TextAreaInput from "@/app/_components/form/TextAreaInput";
-import { fetchAdminProductDetails, updateProductAction } from "@/utils/actions";
+import {
+  fetchAdminProductDetails,
+  updateProductAction,
+  updateProductImageAction,
+} from "@/utils/actions";
 async function EditProductPage({ params }: { params: { id: string } }) {
   const { id } = params;
   const product = await fetchAdminProductDetails(id);
