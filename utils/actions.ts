@@ -63,7 +63,7 @@ export async function fetchSingleProduct(productId: string) {
 }
 
 export const createProductAction = async (
-  prevState: unknown,
+  prevState: null,
   formData: FormData
 ): Promise<{ message: string }> => {
   const user = await getAuthUser();
@@ -125,4 +125,18 @@ export const fetchAdminProductDetails = async (productId: string) => {
   });
   if (!product) redirect("/admin/products");
   return product;
+};
+
+export const updateProductAction = async (
+  prevState: null,
+  formData: FormData
+) => {
+  return { message: "Product updated successfully" };
+};
+
+export const updateProductImageAction = async (
+  prevState: null,
+  formData: FormData
+) => {
+  return { message: "Product Image updated successfully" };
 };
