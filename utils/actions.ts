@@ -171,8 +171,8 @@ export const updateProductImageAction = async (
       },
     });
     revalidatePath(`/admin/products/${productId}/edit`);
+    return { message: "Product Image updated successfully" };
   } catch (error) {
     return renderError(error);
   }
-  return { message: "Product Image updated successfully" };
 };
