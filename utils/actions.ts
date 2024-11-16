@@ -155,5 +155,24 @@ export const updateProductImageAction = async (
   prevState: unknown,
   formData: FormData
 ) => {
+  try {
+    const image = formData.get("image") as File;
+    const productId = formData.get("id") as string;
+    const oldImageUrl = formData.get("url") as string;
+    const validatedImage = validateWithZodSchema(imageSchema, { image });
+    const fullPath = await uploadImage(validatedImage.image);
+    await deleteImage(oldImageUrl);
+    await db.product.update({
+      where: {
+        id: productId,
+      },
+      data: {
+        image: fullPath,
+      },
+    });
+    revalidatePath(`/admin/products/${productId}/edit`);
+  } catch (error) {
+    return renderError(error);
+  }
   return { message: "Product Image updated successfully" };
 };
