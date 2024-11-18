@@ -285,7 +285,15 @@ export const deleteReviewAction = async (prevState: { reviewId: string }) => {
     return renderError(error);
   }
 };
-export const findExistingReview = async () => {};
+export const findExistingReview = async (userId: string, productId: string) => {
+  const review = await db.review.findFirst({
+    where: {
+      clerkId: userId,
+      productId,
+    },
+  });
+  return review;
+};
 
 export const fetchProductRating = async (productId: string) => {
   const result = await db.review.groupBy({
