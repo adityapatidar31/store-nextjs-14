@@ -238,7 +238,7 @@ export const fetchUserFavorites = async () => {
   return favoriteProducts || [];
 };
 
-export const fetchProductReviews = async (productId) => {
+export const fetchProductReviews = async (productId: string) => {
   try {
     const reviews = await db.review.findMany({
       where: {
