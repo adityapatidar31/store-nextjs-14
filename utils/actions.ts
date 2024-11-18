@@ -249,7 +249,26 @@ export const fetchProductReviews = async (productId: string) => {
   });
   return reviews;
 };
-export const fetchProductReviewsByUser = async () => {};
+export const fetchProductReviewsByUser = async () => {
+  const user = await getAuthUser();
+  const reviews = db.review.findMany({
+    where: {
+      clerkId: user.id,
+    },
+    select: {
+      id: true,
+      rating: true,
+      comment: true,
+      product: {
+        select: {
+          image: true,
+          name: true,
+        },
+      },
+    },
+  });
+  return reviews;
+};
 export const deleteReviewAction = async () => {};
 export const findExistingReview = async () => {};
 
