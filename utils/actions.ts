@@ -238,7 +238,21 @@ export const fetchUserFavorites = async () => {
   return favoriteProducts || [];
 };
 
-export const fetchProductReviews = async () => {};
+export const fetchProductReviews = async (productId) => {
+  try {
+    const reviews = await db.review.findMany({
+      where: {
+        productId,
+      },
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    return reviews;
+  } catch (error) {
+    return renderError(error);
+  }
+};
 export const fetchProductReviewsByUser = async () => {};
 export const deleteReviewAction = async () => {};
 export const findExistingReview = async () => {};
