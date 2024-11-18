@@ -6,13 +6,14 @@ import FavoriteToggleButton from "@/app/_components/products/FavoriteToggleButto
 import ProductRating from "@/app/_components/single-product/ProductRating";
 import AddToCart from "@/app/_components/single-product/AddToCart";
 import ShareButton from "@/app/_components/single-product/ShareButton";
+import SubmitReview from "@/app/_components/reviews/SubmitReview";
+import ProductReview from "@/app/_components/reviews/ProductReview";
 
 type PropType = {
   params: { id: string };
 };
 
 async function SingleProductPage({ params }: PropType) {
-  console.log(params);
   const product = await fetchSingleProduct(params.id);
   const { name, image, company, description, price } = product;
   const dollarsAmount = formatCurrency(price);
