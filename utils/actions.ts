@@ -269,7 +269,22 @@ export const fetchProductReviewsByUser = async () => {
   });
   return reviews;
 };
-export const deleteReviewAction = async () => {};
+export const deleteReviewAction = async (prevState: { reviewId: string }) => {
+  const { reviewId } = prevState;
+  const user = await getAuthUser();
+  try {
+    await db.review.delete({
+      where: {
+        clerkId: user.id,
+        id: reviewId,
+      },
+    });
+    revalidatePath("/reviews");
+    return { message: "review deleted Successfully" };
+  } catch (error) {
+    return renderError(error);
+  }
+};
 export const findExistingReview = async () => {};
 
 export const fetchProductRating = async (productId: string) => {
