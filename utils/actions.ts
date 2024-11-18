@@ -252,7 +252,20 @@ export const fetchProductReviews = async (productId: string) => {
 export const fetchProductReviewsByUser = async () => {};
 export const deleteReviewAction = async () => {};
 export const findExistingReview = async () => {};
-export const fetchProductRating = async () => {};
+
+export const fetchProductRating = async (productId: string) => {
+  const result = await db.review.groupBy({
+    by: ["productId"],
+    _avg: {
+      rating: true,
+    },
+    _count: {
+      rating: true,
+    },
+    where: { productId },
+  });
+  return result;
+};
 
 export const createReviewAction = async (
   prevState: unknown,
