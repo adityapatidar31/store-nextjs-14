@@ -2,7 +2,7 @@
 
 import db from "@/utils/db";
 import { redirect } from "next/navigation";
-import { currentUser } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import {
   imageSchema,
   productSchema,
@@ -333,7 +333,18 @@ export const createReviewAction = async (
   }
 };
 
-export const fetchCartItems = async () => {};
+export const fetchCartItems = async () => {
+  const { userId } = auth();
+  const cart = await db.cart.findFirst({
+    where: {
+      clerkId: userId || "",
+    },
+    select: {
+      numItemsInCart: true,
+    },
+  });
+  return cart?.numItemsInCart || 0;
+};
 
 export const fetchProduct = async () => {};
 
