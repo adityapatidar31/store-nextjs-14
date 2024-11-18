@@ -239,19 +239,15 @@ export const fetchUserFavorites = async () => {
 };
 
 export const fetchProductReviews = async (productId: string) => {
-  try {
-    const reviews = await db.review.findMany({
-      where: {
-        productId,
-      },
-      orderBy: {
-        createdAt: "desc",
-      },
-    });
-    return reviews;
-  } catch (error) {
-    return renderError(error);
-  }
+  const reviews = await db.review.findMany({
+    where: {
+      productId,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+  });
+  return reviews;
 };
 export const fetchProductReviewsByUser = async () => {};
 export const deleteReviewAction = async () => {};
