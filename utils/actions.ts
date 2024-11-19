@@ -468,7 +468,18 @@ export const addToCartAction = async (
   prevState: unknown,
   formData: FormData
 ) => {
-  return { message: "Add to card successfully" };
+  const user = await getAuthUser();
+  try {
+    const productId = formData.get("productId") as string;
+    const amount = Number(formData.get("amount"));
+    await fetchProduct(productId);
+    const cart = await fetchOrCreateCart({ userId: user.id });
+    await updateOrCreateCartItem({ productId, cartId: cart.id, amount });
+    await updateCart(cart);
+  } catch (error) {
+    return renderError(error);
+  }
+  redirect("/cart");
 };
 
 export const removeCartItemAction = async () => {};
