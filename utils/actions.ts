@@ -359,7 +359,43 @@ const fetchProduct = async (productId: string) => {
   return product;
 };
 
-export const fetchOrCreateCart = async () => {};
+const includeProductClause = {
+  cartItems: {
+    include: {
+      product: true,
+    },
+  },
+};
+
+export const fetchOrCreateCart = async ({
+  userId,
+  errorOnFailure = false,
+}: {
+  userId: string;
+  errorOnFailure?: boolean;
+}) => {
+  let cart = await db.cart.findFirst({
+    where: {
+      clerkId: userId,
+    },
+    include: includeProductClause,
+  });
+
+  if (!cart && errorOnFailure) {
+    throw new Error("Cart not found");
+  }
+
+  if (!cart) {
+    cart = await db.cart.create({
+      data: {
+        clerkId: userId,
+      },
+      include: includeProductClause,
+    });
+  }
+
+  return cart;
+};
 
 export const updateOrCreateCartItem = async () => {};
 
