@@ -1,3 +1,4 @@
+import { formatCurrency } from "@/utils/format";
 import Image from "next/image";
 import Link from "next/link";
 export const FirstColumn = ({
@@ -38,4 +39,8 @@ export const SecondColumn = ({
       <h4 className="mt-2 capitalize text-xs">{company}</h4>
     </div>
   );
+};
+
+export const FourthColumn = ({ price }: { price: number }) => {
+  return <p className="font-medium md:ml-auto">{formatCurrency(price)}</p>;
 };
