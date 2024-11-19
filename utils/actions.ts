@@ -482,6 +482,10 @@ export const addToCartAction = async (
   redirect("/cart");
 };
 
+export const createOrderAction = async () => {
+  return { message: "create order" };
+};
+
 export const removeCartItemAction = async () => {};
 
 export const updateCartItemAction = async () => {};
