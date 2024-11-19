@@ -413,7 +413,6 @@ const updateOrCreateCartItem = async ({
       cartId,
     },
   });
-
   if (cartItem) {
     cartItem = await db.cartItem.update({
       where: {
