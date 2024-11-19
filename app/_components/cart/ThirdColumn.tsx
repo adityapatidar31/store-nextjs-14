@@ -5,7 +5,6 @@ import { Mode } from "../single-product/SelectProductAmount";
 import FormContainer from "../form/FormContainer";
 import { SubmitButton } from "../form/Buttons";
 import { removeCartItemAction, updateCartItemAction } from "@/utils/actions";
-import { ReloadIcon } from "@radix-ui/react-icons";
 import { useToast } from "@/hooks/use-toast";
 
 function ThirdColumn({ quantity, id }: { quantity: number; id: string }) {
