@@ -346,7 +346,18 @@ export const fetchCartItems = async () => {
   return cart?.numItemsInCart || 0;
 };
 
-export const fetchProduct = async () => {};
+const fetchProduct = async (productId: string) => {
+  const product = await db.product.findUnique({
+    where: {
+      id: productId,
+    },
+  });
+
+  if (!product) {
+    throw new Error("Product not found");
+  }
+  return product;
+};
 
 export const fetchOrCreateCart = async () => {};
 
