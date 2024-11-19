@@ -550,7 +550,7 @@ export const createOrderAction = async () => {
       userId: user.id,
       errorOnFailure: true,
     });
-    const order = await db.order.create({
+    await db.order.create({
       data: {
         clerkId: user.id,
         products: cart.numItemsInCart,
